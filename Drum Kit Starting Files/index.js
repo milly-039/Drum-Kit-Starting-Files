@@ -4,7 +4,8 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function(){
 //alert("click");// this is the identity of the button that triggered the event listner
 //this.style.color = "white";
 var buttoninnerhtml = this.innerHTML;
-Pressk(buttoninnerhtml)
+Pressk(buttoninnerhtml);
+buttonAnimation(buttoninnerhtml);
 });
 }
 function Pressk (key){
@@ -51,8 +52,17 @@ function Pressk (key){
 }
 }
 document.addEventListener("keydown",function(event){
-    Pressk(event.key);
+   buttonAnimation(event.key);
+    Pressk(event.key);//callback of event uspein bhi specifically konsi key press hui// callback function is called by the object that experiences the "oress " ya event/"click"
 });
+
+function buttonAnimation(currentKey){
+   var activeButton=  document.querySelector("."+currentKey);
+activeButton.classList.add("pressed");
+setTimeout(function(){
+    activeButton.classList.remove("pressed");
+},100);
+}
 //contructor fxn---- function BellBoy (name,age,hasWorkPermit,languages){
 //}this.name = name;
 //this.age = age;
